@@ -16,8 +16,16 @@ struct Stop: Decodable {
     let lat: Double
     let lon: Double
     let name: String
-    let type: String
+    let type: TransportTypes
     let routePath: [Transport]?
+}
+
+enum TransportTypes: String, Decodable {
+    case public_transport
+    case train
+    case tram
+    case mcd
+    case subwayHall
 }
 
 struct Transport: Decodable {

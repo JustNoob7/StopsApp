@@ -12,8 +12,6 @@ protocol StopsTableViewModelProtocol {
     var numberOfRows: Int { get }
     func fetchStops(completion: @escaping() -> Void)
     func cellViewModel(at indexPath: IndexPath) -> StopCellViewModelProtocol
-    func getName(indexPath: IndexPath) -> String
-    func getType(indexPath: IndexPath) -> String
 }
 
 class StopsTableViewModel: StopsTableViewModelProtocol {
@@ -41,24 +39,4 @@ class StopsTableViewModel: StopsTableViewModelProtocol {
     func cellViewModel(at indexPath: IndexPath) -> StopCellViewModelProtocol {
         StopCellViewModel(stop: stops[indexPath.row])
     }
-    
-    func getName(indexPath: IndexPath) -> String {
-        stops[indexPath.row].name
-    }
-    
-    func getType(indexPath: IndexPath) -> String {
-        switch stops[indexPath.row].type {
-        case "public_transport":
-            return "Автобусная остановка"
-        case "train":
-            return "Станция электропоезда"
-        case "tram":
-            return "Трамвайная остановка"
-        case "mcd":
-            return "Станция МЦД"
-        default:
-            return "Станция метро"
-        }
-    }
-    
 }

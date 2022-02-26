@@ -23,15 +23,15 @@ class StopCellViewModel: StopCellViewModelProtocol {
     
     var stopType: String {
         switch stop.type {
-        case "public_transport":
+        case .public_transport:
             return "Автобусная остановка"
-        case "train":
+        case .train:
             return "Станция электропоезда"
-        case "tram":
+        case .tram:
             return "Трамвайная остановка"
-        case "mcd":
+        case .mcd:
             return "Станция МЦД"
-        default:
+        case .subwayHall:
             return "Станция метро"
         }
     }
@@ -42,15 +42,15 @@ class StopCellViewModel: StopCellViewModelProtocol {
     
     var transportImageColor: String {
         switch stop.type {
-        case "public_transport":
+        case .public_transport:
             return "systemBlue"
-        case "train":
+        case .train:
             return "systemBrown"
-        case "tram":
+        case .tram:
             return "systemOrange"
-        case "mcd":
+        case .mcd:
             return "systemRed"
-        default:
+        case .subwayHall:
             return "systemTeal"
         }
     }
