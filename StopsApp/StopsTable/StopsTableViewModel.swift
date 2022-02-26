@@ -11,6 +11,7 @@ protocol StopsTableViewModelProtocol {
     var stops: [Stop] { get }
     var numberOfRows: Int { get }
     func fetchStops(completion: @escaping() -> Void)
+    func cellViewModel(at indexPath: IndexPath) -> StopCellViewModelProtocol
     func getName(indexPath: IndexPath) -> String
     func getType(indexPath: IndexPath) -> String
 }
@@ -35,6 +36,10 @@ class StopsTableViewModel: StopsTableViewModelProtocol {
                 print(error)
             }
         }
+    }
+    
+    func cellViewModel(at indexPath: IndexPath) -> StopCellViewModelProtocol {
+        StopCellViewModel(stop: stops[indexPath.row])
     }
     
     func getName(indexPath: IndexPath) -> String {

@@ -20,8 +20,6 @@ class StopsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = StopsTableViewModel()
-        tableView.rowHeight = 80
-        title = viewModel.stops.first?.name
     }
 
 // MARK: - Table view data source
@@ -31,13 +29,10 @@ class StopsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "stop", for: indexPath)
-        var content = cell.defaultContentConfiguration()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "stop", for: indexPath) as! StopTableViewCell
+       
+        cell.viewModel = viewModel.cellViewModel(at: indexPath)
         
-        content.text = viewModel.getName(indexPath: indexPath)
-        content.secondaryText = viewModel.getType(indexPath: indexPath)
-        
-        cell.contentConfiguration = content
         return cell
     }
 }
