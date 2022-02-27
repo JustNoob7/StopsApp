@@ -9,8 +9,8 @@ import Foundation
 
 protocol StopDetailsViewModelProtocol {
     var name: String { get }
-    var lon: String { get }
-    var routePath: [Transport] { get }
+    var lon: Double { get }
+    var lat: Double { get }
     init(stop: Stop)
 }
 
@@ -20,12 +20,12 @@ class StopDetailsViewModel: StopDetailsViewModelProtocol {
         stop.name
     }
     
-    var lon: String {
-        "\(stop.lat) \(stop.lon)"
+    var lon: Double {
+        stop.lon
     }
     
-    var routePath: [Transport] {
-        stop.routePath ?? [Transport(type: "", number: "0", timeArrival: [""], lastStopName: "")]
+    var lat: Double {
+        stop.lat
     }
     
     private var stop: Stop

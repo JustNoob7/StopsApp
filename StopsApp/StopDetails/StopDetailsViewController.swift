@@ -6,21 +6,31 @@
 //
 
 import UIKit
+import MapKit
 
-class StopDetailsViewController: UIViewController {
+class StopDetailsViewController: UIViewController, MKMapViewDelegate {
     
-    @IBOutlet private weak var someLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
     
     var viewModel: StopDetailsViewModelProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         setupUI()
+        makePin()
     }
     
     private func setupUI() {
         title = viewModel.name
-        someLabel.text = viewModel.lon
+    }
+    
+    private func makePin() {
+        let location = CLLocationCoordinate2D(latitude: viewModel.lat, longitude: viewModel.lon)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        mapView.showAnnotations([annotation], animated: true)
+        mapView.selectAnnotation(annotation, animated: true)
     }
 
 }
