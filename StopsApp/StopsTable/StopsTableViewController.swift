@@ -24,8 +24,7 @@ class StopsTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailsVC = segue.destination as! StopDetailsViewController
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        detailsVC.viewModel = viewModel.detailsViewModel(at: indexPath)
+        detailsVC.viewModel = sender as? StopDetailsViewModelProtocol
     }
 }
 
@@ -45,5 +44,9 @@ extension StopsTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.fetchStop(at: indexPath) {
+            let detailsViewModel = self.viewModel.detailsViewModel(at: indexPath)
+            self.performSegue(withIdentifier: "showDetailsVC", sender: detailsViewModel)
+        }
     }
 }

@@ -65,7 +65,6 @@
                                     <outlet property="nameLabel" destination="gfP-TK-93s" id="bej-99-352"/>
                                     <outlet property="transportImageView" destination="ism-1K-Zpo" id="q5c-o7-xVw"/>
                                     <outlet property="typeLabel" destination="S9F-uh-4Rp" id="ReN-uq-RTw"/>
-                                    <segue destination="ETB-K7-xB7" kind="show" id="a4H-Km-f9C"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -75,6 +74,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Stops" id="xpj-7l-H2n"/>
+                    <connections>
+                        <segue destination="ETB-K7-xB7" kind="show" identifier="showDetailsVC" id="N8B-t1-pe3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YaL-NH-cCu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

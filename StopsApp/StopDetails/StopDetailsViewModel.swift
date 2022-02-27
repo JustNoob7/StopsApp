@@ -21,7 +21,7 @@ class StopDetailsViewModel: StopDetailsViewModelProtocol {
     }
     
     var lon: String {
-        "\(stop.lon)"
+        "\(stop.lat) \(stop.lon)"
     }
     
     var routePath: [Transport] {

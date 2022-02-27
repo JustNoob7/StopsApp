@@ -20,7 +20,7 @@ class StopDetailsViewController: UIViewController {
     
     private func setupUI() {
         title = viewModel.name
-        someLabel.text = viewModel.routePath.first?.number
+        someLabel.text = viewModel.lon
     }
 
 }

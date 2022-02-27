@@ -11,6 +11,7 @@ protocol StopsTableViewModelProtocol {
     var numberOfRows: Int { get }
     func fetchStops(completion: @escaping() -> Void)
     func cellViewModel(at indexPath: IndexPath) -> StopCellViewModelProtocol
+    func fetchStop(at indexPath: IndexPath, completion: @escaping() -> Void)
     func detailsViewModel(at indexPath: IndexPath) -> StopDetailsViewModelProtocol
 }
 
@@ -42,25 +43,24 @@ class StopsTableViewModel: StopsTableViewModelProtocol {
         StopCellViewModel(stop: stops[indexPath.row])
     }
     
-    func detailsViewModel(at indexPath: IndexPath) -> StopDetailsViewModelProtocol {
-        fetchStop(with: indexPath)
-        if let stop = stop {
-            print("11")
-            return StopDetailsViewModel(stop: stop)
-        }
-        return StopDetailsViewModel(stop: stops[indexPath.row])
-    }
-    
-    private func fetchStop(with indexPath: IndexPath) {
+    func fetchStop(at indexPath: IndexPath, completion: @escaping() -> Void) {
         let url = url + "/" + stops[indexPath.row].id
         
-        NetworkManager.shared.fetchStop(from: url) { result in
+        NetworkManager.shared.fetchStop(from: url) { [weak self] result in
             switch result {
             case .success(let stop):
-                self.stop = stop
+                self?.stop = stop
+                completion()
             case .failure(let error):
                 print(error)
             }
         }
+    }
+    
+    func detailsViewModel(at indexPath: IndexPath) -> StopDetailsViewModelProtocol {
+        if let stop = stop {
+            return StopDetailsViewModel(stop: stop)
+        }
+        return StopDetailsViewModel(stop: stops[indexPath.row])
     }
 }
