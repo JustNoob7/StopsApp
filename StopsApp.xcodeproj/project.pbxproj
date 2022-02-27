@@ -18,6 +18,8 @@
 		53500BDA27CA6751005DF808 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53500BD927CA6751005DF808 /* NetworkManager.swift */; };
 		53500BDF27CA92D4005DF808 /* StopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53500BDE27CA92D4005DF808 /* StopTableViewCell.swift */; };
 		53500BE227CA9403005DF808 /* StopCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53500BE127CA9402005DF808 /* StopCellViewModel.swift */; };
+		53500BE427CAB8FB005DF808 /* StopDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53500BE327CAB8FB005DF808 /* StopDetailsViewController.swift */; };
+		53500BE727CAB94F005DF808 /* StopDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53500BE627CAB94F005DF808 /* StopDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		53500BD927CA6751005DF808 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		53500BDE27CA92D4005DF808 /* StopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTableViewCell.swift; sourceTree = "<group>"; };
 		53500BE127CA9402005DF808 /* StopCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopCellViewModel.swift; sourceTree = "<group>"; };
+		53500BE327CAB8FB005DF808 /* StopDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopDetailsViewController.swift; sourceTree = "<group>"; };
+		53500BE627CAB94F005DF808 /* StopDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopDetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				53500BD827CA657C005DF808 /* StopsTable */,
+				53500BE527CAB90E005DF808 /* StopDetails */,
 				53500BDB27CA6759005DF808 /* Services */,
 				53500BD527CA61BB005DF808 /* Models */,
 				53500BD127CA616C005DF808 /* Storyboards */,
@@ -136,6 +141,15 @@
 				53500BE127CA9402005DF808 /* StopCellViewModel.swift */,
 			);
 			path = StopCell;
+			sourceTree = "<group>";
+		};
+		53500BE527CAB90E005DF808 /* StopDetails */ = {
+			isa = PBXGroup;
+			children = (
+				53500BE327CAB8FB005DF808 /* StopDetailsViewController.swift */,
+				53500BE627CAB94F005DF808 /* StopDetailsViewModel.swift */,
+			);
+			path = StopDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,9 +224,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				53500BDA27CA6751005DF808 /* NetworkManager.swift in Sources */,
+				53500BE427CAB8FB005DF808 /* StopDetailsViewController.swift in Sources */,
 				53500BCF27CA6051005DF808 /* StopsTableViewController.swift in Sources */,
 				53500BBB27CA5D36005DF808 /* AppDelegate.swift in Sources */,
 				53500BBD27CA5D36005DF808 /* SceneDelegate.swift in Sources */,
+				53500BE727CAB94F005DF808 /* StopDetailsViewModel.swift in Sources */,
 				53500BE227CA9403005DF808 /* StopCellViewModel.swift in Sources */,
 				53500BDF27CA92D4005DF808 /* StopTableViewCell.swift in Sources */,
 				53500BD727CA6576005DF808 /* StopsTableViewModel.swift in Sources */,

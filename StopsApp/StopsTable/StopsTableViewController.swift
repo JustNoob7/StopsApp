@@ -21,9 +21,16 @@ class StopsTableViewController: UITableViewController {
         super.viewDidLoad()
         viewModel = StopsTableViewModel()
     }
-
-// MARK: - Table view data source
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let detailsVC = segue.destination as! StopDetailsViewController
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        detailsVC.viewModel = viewModel.detailsViewModel(at: indexPath)
+    }
+}
+
+// MARK: - Table view data source and delegate
+extension StopsTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.numberOfRows
     }
@@ -34,5 +41,9 @@ class StopsTableViewController: UITableViewController {
         cell.viewModel = viewModel.cellViewModel(at: indexPath)
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
