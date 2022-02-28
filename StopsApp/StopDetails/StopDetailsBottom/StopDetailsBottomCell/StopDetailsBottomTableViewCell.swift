@@ -12,6 +12,7 @@ class StopDetailsBottomTableViewCell: UITableViewCell {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var lastStopLabel: UILabel!
+    
     @IBOutlet weak var transportImageView: UIImageView!
     
     static let identifier = "StopDetailsBottomTableViewCell"

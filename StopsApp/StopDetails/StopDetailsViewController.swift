@@ -48,5 +48,4 @@ class StopDetailsViewController: UIViewController, MKMapViewDelegate {
         bottomVC.viewModel = viewModel.bottomControllerViewModel()
         present(bottomVC, animated: true)
     }
-
 }

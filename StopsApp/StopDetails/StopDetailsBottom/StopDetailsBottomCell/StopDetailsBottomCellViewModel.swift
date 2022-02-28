@@ -25,6 +25,8 @@ class StopDetailsBottomCellViewModel: StopDetailsBottomCellViewModelProtocol {
     var time: String {
         if transport.timeArrival.count == 1 {
             return transport.timeArrival.joined(separator: "")
+        } else if transport.timeArrival.isEmpty {
+            return "Нет данных о времени прибытия"
         } else {
             return transport.timeArrival.joined(separator: ", ")
         }
