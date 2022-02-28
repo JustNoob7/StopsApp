@@ -8,17 +8,13 @@
 import Foundation
 
 protocol StopDetailsViewModelProtocol {
-    var name: String { get }
     var lon: Double { get }
     var lat: Double { get }
     init(stop: Stop)
+    func bottomControllerViewModel() -> StopDetailsBottomTableViewModelProtocol
 }
 
 class StopDetailsViewModel: StopDetailsViewModelProtocol {
-    
-    var name: String {
-        stop.name
-    }
     
     var lon: Double {
         stop.lon
@@ -32,5 +28,9 @@ class StopDetailsViewModel: StopDetailsViewModelProtocol {
     
     required init(stop: Stop) {
         self.stop = stop
+    }
+    
+    func bottomControllerViewModel() -> StopDetailsBottomTableViewModelProtocol {
+        StopDetailsBottomTableViewModel(stop: stop)
     }
 }

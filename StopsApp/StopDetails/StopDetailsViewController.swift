@@ -17,15 +17,16 @@ class StopDetailsViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        setupUI()
         makePin()
     }
-    @IBAction func backButtonPressed() {
-        dismiss(animated: true)
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showBottomController()
     }
     
-    private func setupUI() {
-        title = viewModel.name
+    @IBAction func backButtonPressed() {
+        dismiss(animated: true)
     }
     
     private func makePin() {
@@ -34,6 +35,18 @@ class StopDetailsViewController: UIViewController, MKMapViewDelegate {
         annotation.coordinate = location
         mapView.showAnnotations([annotation], animated: true)
         mapView.selectAnnotation(annotation, animated: true)
+    }
+    
+    private func showBottomController() {
+        let bottomVC = StopDetailsBottomTableViewController()
+        if let sheet = bottomVC.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.preferredCornerRadius = 20
+            sheet.prefersGrabberVisible = true
+        }
+        bottomVC.viewModel = viewModel.bottomControllerViewModel()
+        present(bottomVC, animated: true)
     }
 
 }
