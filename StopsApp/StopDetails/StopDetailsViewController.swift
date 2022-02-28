@@ -20,6 +20,9 @@ class StopDetailsViewController: UIViewController, MKMapViewDelegate {
         setupUI()
         makePin()
     }
+    @IBAction func backButtonPressed() {
+        dismiss(animated: true)
+    }
     
     private func setupUI() {
         title = viewModel.name

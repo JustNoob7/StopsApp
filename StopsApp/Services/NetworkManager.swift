@@ -14,6 +14,7 @@ enum NetworkError: Error {
 }
 
 final class NetworkManager {
+    
     static let shared = NetworkManager()
     
     private init() {}
@@ -67,17 +68,4 @@ final class NetworkManager {
 
         }.resume()
     }
-    
-//    func fetchStop(url: String) async throws -> Stop {
-//        guard let url = URL(string: url) else {
-//            throw NetworkError.invalidURL
-//        }
-//
-//        let (data, _) = try await URLSession.shared.data(from: url)
-//        guard let stop = try? JSONDecoder().decode(Stop.self, from: data) else {
-//            throw NetworkError.noData
-//        }
-//
-//        return stop
-//    }
 }
