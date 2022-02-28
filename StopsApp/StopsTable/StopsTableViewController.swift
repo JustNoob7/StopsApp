@@ -51,12 +51,12 @@ extension StopsTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        viewModel.fetchStop(at: indexPath) { [weak self] error in
+        viewModel.fetchStop(at: indexPath) { [unowned self] error in
             if error != nil {
-                self?.showAlert()
+                self.showAlert()
             } else {
-                let detailsViewModel = self?.viewModel.detailsViewModel(at: indexPath)
-                self?.performSegue(withIdentifier: "showDetailsVC", sender: detailsViewModel)
+                let detailsViewModel = self.viewModel.detailsViewModel(at: indexPath)
+                self.performSegue(withIdentifier: "showDetailsVC", sender: detailsViewModel)
             }
         }
     }

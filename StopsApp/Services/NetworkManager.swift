@@ -18,7 +18,7 @@ final class NetworkManager {
     
     private init() {}
     
-    func fetchStops(from url: String, with completion: @escaping(Result<[Stop], NetworkError>) -> Void) {
+    func fetch<T: Decodable>(dataType: T.Type, from url: String, with completion: @escaping(Result<T, NetworkError>) -> Void) {
         guard let url = URL(string: url) else {
             completion(.failure(.invalidURL))
             return
@@ -32,9 +32,9 @@ final class NetworkManager {
             }
             
             do {
-                let stopsInfo = try JSONDecoder().decode(StopsInfo.self, from: data)
+                let type = try JSONDecoder().decode(T.self, from: data)
                 DispatchQueue.main.async {
-                    completion(.success(stopsInfo.data))
+                    completion(.success(type))
                 }
             } catch {
                 completion(.failure(.decodingError))
@@ -43,30 +43,4 @@ final class NetworkManager {
         }.resume()
     }
     
-    func fetchStop(from url: String, with completion: @escaping(Result<Stop, NetworkError>) -> Void) {
-        guard let url = URL(string: url) else {
-            completion(.failure(.invalidURL))
-            return
-        }
-
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                completion(.failure(.noData))
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-
-            do {
-                let stop = try JSONDecoder().decode(Stop.self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(stop))
-                }
-            } catch {
-                DispatchQueue.main.async {
-                    completion(.failure(.decodingError))
-                }
-            }
-
-        }.resume()
-    }
 }

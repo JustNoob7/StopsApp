@@ -28,10 +28,10 @@ class StopsTableViewModel: StopsTableViewModelProtocol {
     private var stop: Stop?
         
     func fetchStops(completion: @escaping () -> Void) {
-        NetworkManager.shared.fetchStops(from: url) { [unowned self] result in
+        NetworkManager.shared.fetch(dataType: StopsInfo.self, from: url) { [unowned self] result in
             switch result {
-            case .success(let stops):
-                self.stops = stops
+            case .success(let stopsInfo):
+                self.stops = stopsInfo.data
                 completion()
             case .failure(let error):
                 print(error)
@@ -46,7 +46,7 @@ class StopsTableViewModel: StopsTableViewModelProtocol {
     func fetchStop(at indexPath: IndexPath, completion: @escaping(_ error: Error?) -> Void) {
         let url = url + "/" + stops[indexPath.row].id
         
-        NetworkManager.shared.fetchStop(from: url) { [weak self] result in
+        NetworkManager.shared.fetch(dataType: Stop.self, from: url) { [weak self] result in
             switch result {
             case .success(let stop):
                 self?.stop = stop
