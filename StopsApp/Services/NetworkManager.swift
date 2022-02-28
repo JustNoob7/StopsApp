@@ -37,7 +37,9 @@ final class NetworkManager {
                     completion(.success(type))
                 }
             } catch {
-                completion(.failure(.decodingError))
+                DispatchQueue.main.async {
+                    completion(.failure(.decodingError))
+                }
             }
 
         }.resume()
