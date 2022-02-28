@@ -9,6 +9,7 @@ import Foundation
 
 protocol StopDetailsBottomTableViewModelProtocol {
     var numberOfRows: Int { get }
+    var stopName: String { get }
     init(stop: Stop)
     func cellViewModel(at indexPath: IndexPath) -> StopDetailsBottomCellViewModelProtocol
 }
@@ -19,6 +20,10 @@ class StopDetailsBottomTableViewModel: StopDetailsBottomTableViewModelProtocol {
         stop.routePath?.count ?? 0
     }
     
+    var stopName: String {
+        stop.name
+    }
+    
     private var stop: Stop
     
     required init(stop: Stop) {
@@ -26,6 +31,6 @@ class StopDetailsBottomTableViewModel: StopDetailsBottomTableViewModelProtocol {
     }
     
     func cellViewModel(at indexPath: IndexPath) -> StopDetailsBottomCellViewModelProtocol {
-        StopDetailsBottomCellViewModel(transport: stop.routePath?[indexPath.row] ?? Transport(type: "", number: "", timeArrival: [""], lastStopName: ""))
+        StopDetailsBottomCellViewModel(transport: stop.routePath?[indexPath.row] ?? Transport(type: .train, number: "", timeArrival: [""], lastStopName: ""))
     }
 }

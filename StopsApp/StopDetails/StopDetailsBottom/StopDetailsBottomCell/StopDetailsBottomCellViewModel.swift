@@ -39,7 +39,16 @@ class StopDetailsBottomCellViewModel: StopDetailsBottomCellViewModelProtocol {
     }
     
     var transportImageColor: String {
-        "systemTeal"
+        switch transport.type {
+        case .bus:
+            return "systemBlue"
+        case .tram:
+            return "systemOrange"
+        case .train:
+            return "systemBrown"
+        case .mcd:
+            return "systemRed"
+        }
     }
     
     private var transport: Transport

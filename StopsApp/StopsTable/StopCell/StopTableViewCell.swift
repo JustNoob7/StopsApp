@@ -18,7 +18,7 @@ class StopTableViewCell: UITableViewCell {
             nameLabel.text = viewModel.stopName
             typeLabel.text = viewModel.stopType
             transportImageView.image = UIImage(systemName: viewModel.transportImage)
-            transportImageView.tintColor = UIColor(named: viewModel.transportImageColor)
+            transportImageView.backgroundColor = UIColor(named: viewModel.transportImageColor)
         }
     }
 }

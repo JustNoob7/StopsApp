@@ -22,7 +22,7 @@ class StopDetailsBottomTableViewCell: UITableViewCell {
             timeLabel.text = viewModel.time
             lastStopLabel.text = viewModel.lastStop
             transportImageView.image = UIImage(systemName: viewModel.transportImage)
-            transportImageView.backgroundColor = UIColor(named: viewModel.transportImageColor)
+            transportImageView.tintColor = UIColor(named: viewModel.transportImageColor)
         }
     }
 
